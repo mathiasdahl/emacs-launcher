@@ -1,0 +1,107 @@
+;; -*- mode: Lisp; -*-
+;; Control file for Emacs Launcher
+(
+
+ ;; Simple commands
+
+ ("Bug Search with prompt" . ("http://serverurl/buglnw/BlBug.page?SEARCH=Y&BUG_ID=%s" "Bug ID" "\\w\\([0-9]+\\)\\w"))
+ ("Google Search" . ("http://www.google.com/search?q=%s" "Search for: "))
+ ("Browse Jira Issue" . ("http://jira/browse/%s" "Jira Issue ID" "\\w\\([a-zA-Z]+-[0-9]+\\)\\w"))
+ ("Lookup word at Tyda.se" . ("http://tyda.se/search?w=%s" "Word to lookup"))
+
+ ("Remote Desktop connection" . "C:\\WINDOWS\\system32\\mstsc.exe")
+ ("Calculator" . "calc")
+
+ ("Alarm - Define an alarm" .
+  (lambda ()
+    (shell-command 
+     (format 
+      "Schtasks /Create /SC ONCE /TN MyAlarm /F /ST %s /TR \"msg * %s\""
+      (let ((time (read-string "Time [hh:mm]: ")))
+        (cond ((string-match "[0-9][0-9]:[0-9][0-9]" time)
+               time)
+              ((string-match "\\([0-9][0-9]\\)\\([0-9][0-9]\\)" time)
+               (concat (match-string 1 time) ":" (match-string 2 time)))))
+      (read-string "Message to show: ")))))
+ 
+ ("charactermap" . "C:\\WINDOWS\\system32\\charmap.exe")
+ ("cmd" . "C:\\WINDOWS\\system32\\cmd.exe")
+ ("downloadedprogramfiles" . "\"C:\\WINDOWS\\Downloaded Program Files\"")
+ ("emacs" . "c:\\Users\\mdahse\\Dropbox\\work\\pgm\\emacs\\bin\\runemacs.exe")
+ ("explorer" . "explorer")
+ ("firefox" . "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\"")
+ ("gimp" . "\"C:\\Program Files\\GIMP-2.0\\bin\\gimp-2.6.exe\"")
+ ("music" . "\"C:\\Document\\My Music\"")
+ ("notepad" . "C:\\WINDOWS\\system32\\notepad.exe")
+ ("programfiles" . "\"C:\\Program Files\"")
+ ("regedit" . "C:\\WINDOWS\\regedit.exe")
+ ("services" . ("C:\\WINDOWS\\system32\\services.msc" "/s"))
+ ("sound recorder" . "C:\\WINDOWS\\system32\\sndrec32.exe")
+ ("sqlplus" . "C:\\oracle\\ora92\\bin\\sqlplusw.exe")
+ ("volume control" . "C:\\WINDOWS\\system32\\sndvol32.exe")
+ ("PowerPoint" . "\"C:\\Program Files\\Microsoft Office\\Office12\\POWERPNT.EXE\"")
+ ("Word" . "\"C:\\Program Files\\Microsoft Office\\Office12\\WINWORD.EXE\"")
+ ("Excel" . "\"C:\\Program Files\\Microsoft Office\\Office12\\EXCEL.EXE\"")
+ ("ExamDiff" . "\"C:\\Program Files\\ExamDiff Pro\\ExamDiff.exe\"")
+ ;; Quick send mail
+ ("Send mail to Camilla / CAWOSE" .            "mailto:cawose")
+ ("Send mail to Team4" .                       "mailto:RND.Service%20%26%20Assets.Team4")
+
+ ;; With arguments
+
+ ("Emacs -Q" . ("c:/Users/mdahse/Dropbox/work/pgm/emacs/bin/runemacs" "-Q"))
+
+ ;; Advanced commands
+
+ ;; The command to add an url and automatically fetch the title is
+ ;; nice and all but sometimes get stuck on pages that require
+ ;; authentication, so better have a second version as well.
+
+ ("Add URL - no auto page title" .
+  (lambda ()
+    (find-file "~/.common-urls")
+    (goto-char (point-max))
+    (let ((url (read-string "URL: ")))
+      (insert (format "\n%s|%s"
+                      url
+                      (read-string "Name: "))))
+    (save-buffer)
+    (kill-buffer)))
+
+ ("Add URL - auto page title" .
+  (lambda ()
+    (find-file "~/.common-urls")
+    (goto-char (point-max))
+    (let ((url (read-string "URL: ")))
+      (insert (format "\n%s|%s"
+                      url
+                      (read-string "Name: " (get-page-title url)))))
+    (save-buffer)
+    (kill-buffer)))
+
+ ("Add clip" .
+  (lambda ()
+    (add-clip (read-string "Clip name: ")
+              (read-string "Clip content: "))))
+
+ ("Add command (program, file name, folder, URL or other)" .
+  (lambda ()
+    (find-file (format "%s.commands" emacs-launcher-installation-directory))
+    (goto-char (point-min))
+    (forward-sexp)
+    (backward-char)
+    (insert (format "\n(\"%s\" . \"%s\")\n"
+                    (read-string "Name: ")
+                    (read-string "Command (a file name or something else that Windows -> Run could execute): ")))
+    (save-buffer)
+    (kill-buffer)))
+
+ ("Add command by drag and drop" .
+  (lambda ()
+    (call-interactively 'add-file-from-drag-and-drop)))
+
+ ("Visual Studio Command Prompt" . ("cmd" "/k \"c:\\Program Files\\Microsoft Visual Studio 8\\VC\\vcvarsall.bat\" x86"))
+ ("Users" . "c:\\Users")
+ ("Safari" . "C:\\Users\\Public\\Desktop\\Safari.lnk")
+
+)
