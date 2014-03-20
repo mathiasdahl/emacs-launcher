@@ -9,6 +9,12 @@ Emacs Launcher is nothing more than some simple scripts and elisp files that use
 
 (some time back I blogged about this as well, and it might suit as more background as well: http://muublog.blogspot.se/2014/01/my-emacs-launcher-makes-me-happy.html)
 
+# How does it look? (Show me! Show me!)
+
+Something like this, with my wonderful default colors:
+
+![Screenshot of Emacs Launcher in action](http://1.bp.blogspot.com/-x4wA7pu6k4k/UuvicZir3CI/AAAAAAAAk4M/P2bfK8nEE1U/s1600/emacslauncherscreenshotwindows.png)
+
 # Installation instructions
 
 0. Get the files (duh)
