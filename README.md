@@ -90,3 +90,7 @@ Well, it works for me and it has the capabilities that I need, which is to list 
 
 Well, I did not want to scrap it and decided I liked the name Emacs Launcher better and that maybe, in the future, I will, or others will, add other "launcher engines". Probably someome want to use Helm instead.
 
+## It's INSANE to use Emacs as a launcher! (right?)
+
+No, it's not. It's the most successful of all launcher hacks I have done. It might look funky and it might feel a bit strange to use "a text editor" (though long-time Emacs users knows that is not what it is), but oh is it powerful and easy to customize for people with a little elisp knowledge. In fact, I dare any developer of any launcher to try to writing new "plugins" faster than what people will be able to do in Emacs Launcher. YEAH!
+
