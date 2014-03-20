@@ -84,9 +84,9 @@ Similar to anything-c-source-common-folders, but for URLs / web pages. There is 
 
 ## Why use Anything, and why such an old version of it?
 
-Well, it works for me and it has the capabilities that I need, which is to list different commands matching user input. Feel free to submit patches to use other "engines".
+Well, it works for me and it has the capabilities that I need, which is to list different commands matching user input. Feel free to submit patches ;)
 
 ## What about anything-launcher.el?
 
-Well, I decided I liked the name Emacs Launcher better and that maybe, in the future, I will, or others will, add other "launcher engines". Probably someome want to use Helm instead.
+Well, I did not want to scrap it and decided I liked the name Emacs Launcher better and that maybe, in the future, I will, or others will, add other "launcher engines". Probably someome want to use Helm instead.
 
