@@ -7,6 +7,8 @@ A launcher for programs, files, folders, web pages and other, using Emacs (super
 
 Emacs Launcher is nothing more than some simple scripts and elisp files that uses Emacs and the Anything package as a launcher to launch programs, web pages, open common folders and what have you. The possibilities are almost endless (since the commands/sources are programmed using elisp) and Emacs Launcher comes with a couple of convenient example "sources" for most needs. By looking at the example sources and the helper functions they use, you should be able to create your own sources to "launch" pretty much everything. And launching does not just mean opening or starting things, you can of course add commands that does something silently. For example, there is an example command that creates a simple alarm using the operating system scheduler. After installation, Emacs Launcher is capable of doing many things from the start, but you probably want to extend it with your own commands, or command sources (see below for what sources that are available from start).
 
+(some time back I blogged about this as well, and it might suit as more background as well: http://muublog.blogspot.se/2014/01/my-emacs-launcher-makes-me-happy.html)
+
 # Installation instructions
 
 0. Get the files (duh)
