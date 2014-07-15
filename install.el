@@ -13,7 +13,7 @@
             (if (not (y-or-n-p "Installation directory does not exist. Do you want to create it?"))
                 (error "Installation aborted.")
               (make-directory installation-directory)))
-	(dolist (file (directory-files emacs-launcher-source-directory t "\\(\\.el\\|\\.txt\\|^\\.[^.]+\\)$"))
+	(dolist (file (directory-files emacs-launcher-source-directory t "\\(\\.el\\|\\.txt\\|^.\\(clips\\|commands\\|common-folders\\|common-urls\\)\\)$"))
 	  (copy-file file installation-directory t))
         (emacs-launcher-install-create-emacs-launcher-script installation-directory)
         (emacs-launcher-install-create-runemacs-script installation-directory)
