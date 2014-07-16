@@ -47,9 +47,12 @@ q - quit launcher
 ;; Change some faces to match the colors better.
 (set-face-attribute 'highlight nil :background "chocolate")
 
-(modify-frame-parameters
- (selected-frame)
- '((width . 180)
-   (height . 30)
-   (top . 200)
-   (left . 200)))
+(defun setup-frame ()
+  (modify-frame-parameters
+   emacs-launcher-frame
+   '((width . 180)
+     (height . 30)
+     (top . 200)
+     (left . 200))))
+
+(setup-frame)

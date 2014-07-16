@@ -23,8 +23,6 @@
 
 (defvar emacs-launcher-frame (selected-frame))
 
-;;(require 'cl)
-
 (load-file "emacs-launcher-server.el")
 (load-file "emacs-launcher-looks.el")
 (load-file "emacs-launcher-file-dropper.el")
@@ -36,6 +34,7 @@
 (defun emacs-launcher ()
   "Main launcher."
   (interactive)
+  (setup-frame)
   (let ((anything-sources
          (list
           anything-c-source-special
@@ -44,8 +43,8 @@
           anything-c-source-clips
           anything-c-source-common-folders
           anything-c-source-urls)))
-        (call-interactively 'anything)
-	(iconify-frame emacs-launcher-frame)))
+    (call-interactively 'anything)
+    (iconify-frame emacs-launcher-frame)))
 
 ;; Go go go!
 (emacs-launcher)
